@@ -4,32 +4,98 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hughes Virtual LLC</title>
-  <meta name="description" content="Hughes Virtual LLC — Simulation, XR, and design." />
+  <meta name="description" content="Hughes Virtual LLC - Simulation, XR, and design." />
+  <link rel="canonical" href="https://darinehughes.github.io/" />
+
+  <!-- Favicon (Option A - Default dark background with light H) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%230f1115'/><text x='50%' y='58%' font-size='36' text-anchor='middle' fill='%23e6e8ee' font-family='Arial, sans-serif'>H</text></svg>'">
+
+  <!-- Favicon variations (swap href if you prefer)
+  Option B - Light background with dark H:
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%23e6e8ee'/><text x='50%' y='58%' font-size='36' text-anchor='middle' fill='%230f1115' font-family='Arial, sans-serif'>H</text></svg>'">
+
+  Option C - Blue accent background:
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%2364a8ff'/><text x='50%' y='58%' font-size='36' text-anchor='middle' fill='%230f1115' font-family='Arial, sans-serif'>H</text></svg>'">
+  -->
+
+  <!-- Open Graph / Social previews -->
+  <meta property="og:title" content="Hughes Virtual LLC" />
+  <meta property="og:description" content="Simulation, XR, and design. Applied R&D for training and performance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://darinehughes.github.io/" />
+
+  <meta name="theme-color" content="#0f1115" />
+
   <style>
-    :root { --bg:#0f1115; --fg:#e6e8ee; --muted:#9aa3b2; --accent:#64a8ff; }
+    :root {
+      --bg:#0f1115;
+      --fg:#e6e8ee;
+      --muted:#9aa3b2;
+      --accent:#64a8ff;
+      --border:#2a2f3a;
+    }
     html,body { height:100%; margin:0; }
-    body { display:grid; place-items:center; background:var(--bg); color:var(--fg);
-           font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    main { text-align:center; padding:4rem 1.5rem; max-width:720px; }
-    h1 { font-size:2.6rem; margin:0 0 .5rem 0; letter-spacing:.4px; }
-    p { margin:.35rem 0; color:var(--muted); }
-    .pill { display:inline-block; padding:.4rem .7rem; border:1px solid #2a2f3a; border-radius:999px;
-            font-size:.9rem; color:var(--fg); background:#121521; }
-    a { color:var(--accent); text-decoration:none; }
+    body {
+      display:grid;
+      place-items:center;
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    main {
+      text-align:center;
+      padding:4rem 1.5rem;
+      max-width:720px;
+    }
+    h1 {
+      font-size:2.6rem;
+      margin:0 0 .5rem 0;
+      letter-spacing:.4px;
+    }
+    p {
+      margin:.35rem 0;
+      color:var(--muted);
+    }
+    .pill {
+      display:inline-block;
+      padding:.4rem .7rem;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:.9rem;
+      color:var(--fg);
+      background:#121521;
+    }
+    a {
+      color:var(--accent);
+      text-decoration:none;
+    }
     a:hover { text-decoration:underline; }
-    footer { margin-top:2rem; font-size:.9rem; color:#7f8896; }
+    footer {
+      margin-top:2rem;
+      font-size:.9rem;
+      color:#7f8896;
+    }
+    .spacer { height:0.5rem; }
   </style>
 </head>
+
 <body>
   <main>
     <div class="pill">Hughes Virtual LLC</div>
-    <h1>Simulation, XR, AI Conservational Solutions</h1>
-    <p>Applied R&D for training and performance. Interoperability, embedded devices, and mixed reality.</p>
+    <h1>Simulation, XR, and design</h1>
+    <p>Applied R&amp;D for training and performance. Interoperability, embedded devices, and mixed reality.</p>
+
+    <div class="spacer"></div>
+
     <p>Orlando, Florida</p>
-    <p><a href="https://aics-sim.com/"> AICS, LLC</a></p>
+    <p><a href="https://aics-sim.com/" target="_blank" rel="noopener">AICS, LLC</a></p>
     <p>Contact: <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a></p>
+
     <footer>© <span id="y"></span> Hughes Virtual LLC</footer>
   </main>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

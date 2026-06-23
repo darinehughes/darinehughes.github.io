@@ -1,800 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Hughes Virtual LLC</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Hughes Virtual LLC - Simulation, conversational AI, and XR systems for training and human performance."
-  />
+  <title>Hughes Virtual LLC</title>
+  <meta name="description" content="Hughes Virtual LLC develops applied AI, simulation, communication analytics, and training technologies for education, healthcare, and human performance." />
   <style>
-    :root {
-      --bg: #0f1115;
-      --bg-alt: #161921;
-      --fg: #f5f5f7;
-      --muted: #a1a5b2;
-      --accent: #7dd3fc;
-      --accent-soft: rgba(125, 211, 252, 0.08);
-      --border: #262a36;
-      --max-width: 900px;
-      --radius: 12px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1f2433, #05060a 55%);
-      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .page {
-      min-height: 100vh;
-      padding: 32px 20px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    header,
-    main,
-    footer {
-      width: 100%;
-      max-width: var(--max-width);
+      color: #1f2933;
+      background: #f7f8fa;
     }
 
     header {
-      margin-bottom: 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      background: #101820;
+      color: white;
+      padding: 56px 24px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
     }
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 30%, #fefce8 0, transparent 40%),
-        conic-gradient(from 200deg, #7dd3fc, #4ade80, #a855f7, #7dd3fc);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    section {
+      margin-bottom: 56px;
     }
 
-    .logo::after {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #020617, #020617 35%, transparent 70%);
-      mix-blend-mode: multiply;
-      opacity: 0.9;
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin: 0 0 16px;
     }
 
-    .brand-text h1 {
-      margin: 0;
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
     }
 
-    .brand-text p {
-      margin: 0;
-      font-size: 0.86rem;
-      color: var(--muted);
+    h2 {
+      font-size: 2rem;
+      color: #101820;
     }
 
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
+    h3 {
+      color: #243b53;
     }
 
-    nav a {
-      color: var(--muted);
+    p {
+      max-width: 760px;
     }
 
-    nav a:hover {
-      color: var(--fg);
+    .tagline {
+      font-size: 1.25rem;
+      max-width: 820px;
+      color: #d9e2ec;
     }
 
-    .hero {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
-      border-radius: 18px;
-      padding: 28px 24px 26px;
-      border: 1px solid var(--border);
-      box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(148, 163, 184, 0.08);
-      margin-bottom: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(52, 211, 153, 0.12), transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-      gap: 20px;
-      align-items: center;
-    }
-
-    .hero h2 {
-      margin: 0 0 8px;
-      font-size: 1.9rem;
-    }
-
-    .hero-sub {
-      margin: 0 0 12px;
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 34rem;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 0.76rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(15, 23, 42, 0.8);
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .hero-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
+    .button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 18px;
+      background: #2f80ed;
+      color: white;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #22c55e);
-      color: #020617;
+      border-radius: 6px;
       font-weight: 600;
-      box-shadow:
-        0 12px 30px rgba(15, 23, 42, 0.7),
-        0 0 0 1px rgba(15, 23, 42, 0.3);
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.06);
-      text-decoration: none;
-    }
-
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.4);
-      color: var(--fg);
-      background: rgba(15, 23, 42, 0.65);
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(226, 232, 240, 0.9);
-      text-decoration: none;
-    }
-
-    .hero-meta {
-      margin-top: 14px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .hero-meta span {
-      margin-right: 14px;
-      white-space: nowrap;
-    }
-
-    .hero-card {
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.84rem;
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .hero-card-tag {
-      font-size: 0.75rem;
-      color: var(--muted);
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      padding: 2px 8px;
-    }
-
-    .hero-card-body {
-      color: var(--muted);
-    }
-
-    .hero-list {
-      list-style: none;
-      padding: 0;
-      margin: 4px 0 0;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .hero-bullet {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .hero-card-footer {
-      border-top: 1px solid rgba(41, 50, 73, 0.9);
-      padding-top: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-card-footnote {
-      color: var(--muted);
-      font-size: 0.78rem;
-    }
-
-    .hero-card-link {
-      font-size: 0.78rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .hero-card-link:hover {
-      text-decoration: underline;
-    }
-
-    .content-section {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: var(--radius);
-      padding: 20px 20px 18px;
-      border: 1px solid var(--border);
-      margin-bottom: 18px;
-    }
-
-    .content-section h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .content-section p {
-      margin: 0 0 8px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .card {
-      border-radius: 12px;
-      padding: 14px;
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.98));
-    }
-
-    .card h4 {
-      margin: 0 0 6px;
-      font-size: 0.95rem;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-      margin-bottom: -2px;
-    }
-
-    .pill {
-      font-size: 0.78rem;
-      border-radius: 999px;
-      padding: 3px 9px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.7);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
     }
 
-    .grid-item {
+    .card {
+      background: white;
+      border: 1px solid #e1e7ec;
       border-radius: 10px;
-      padding: 10px 11px 9px;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(30, 41, 59, 0.9);
-      font-size: 0.88rem;
+      padding: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
-    .grid-item h4 {
-      margin: 0 0 4px;
-      font-size: 0.92rem;
-    }
-
-    .grid-item p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 16px;
-    }
-
-    .list-tight {
-      margin: 4px 0 0;
-      padding-left: 17px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .list-tight li {
-      margin-bottom: 3px;
-    }
-
-    .contact-block {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      font-size: 0.9rem;
-      margin-top: 6px;
-      color: var(--muted);
-    }
-
-    .contact-block span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .contact-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
+    .small {
+      font-size: 0.95rem;
+      color: #52606d;
     }
 
     footer {
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(30, 41, 59, 0.9);
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 800px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .two-column {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .page {
-        padding: 20px 14px 28px;
-      }
-
-      .hero {
-        padding: 20px 16px 18px;
-      }
-
-      .hero h2 {
-        font-size: 1.6rem;
-      }
+      background: #101820;
+      color: #d9e2ec;
+      padding: 28px 24px;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="brand-text">
-          <h1>Hughes Virtual LLC</h1>
-          <p>Simulation, conversational AI, and XR systems</p>
+  <header>
+    <h1>Hughes Virtual LLC</h1>
+    <p class="tagline">
+      Applied AI, simulation, communication analytics, and training technologies for education, healthcare, and human performance.
+    </p>
+    <a class="button" href="mailto:darinehughes@gmail.com">Contact Hughes Virtual</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>What We Do</h2>
+      <p>
+        Hughes Virtual LLC is a research and development company focused on turning advanced simulation, artificial intelligence, and educational technology concepts into practical systems. We support universities, government partners, healthcare programs, and commercial teams developing tools for training, coaching, reflection, and performance improvement.
+      </p>
+    </section>
+
+    <section>
+      <h2>Areas of Practice</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Conversational AI</h3>
+          <p class="small">Scenario-based virtual humans, role-play systems, coaching agents, and AI-supported training environments.</p>
+        </div>
+
+        <div class="card">
+          <h3>Communication Analytics</h3>
+          <p class="small">Tools for analyzing discourse, feedback, questioning, emotion, interaction patterns, and coaching conversations.</p>
+        </div>
+
+        <div class="card">
+          <h3>Simulation and Training</h3>
+          <p class="small">Custom software for medical simulation, education, emergency response, defense training, and human performance.</p>
+        </div>
+
+        <div class="card">
+          <h3>XR and Immersive Learning</h3>
+          <p class="small">Extended reality systems, virtual environments, and interactive learning tools for complex practice-based skills.</p>
+        </div>
+
+        <div class="card">
+          <h3>Research Software Development</h3>
+          <p class="small">Prototype development, productization, data pipelines, dashboards, evaluation tools, and deployment support.</p>
+        </div>
+
+        <div class="card">
+          <h3>Technology Transition</h3>
+          <p class="small">Support for SBIR/STTR efforts, commercialization planning, proposal development, and research-to-product transition.</p>
         </div>
       </div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#focus">Capabilities</a>
-        <a href="#about">Background</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    </section>
 
-    <main>
-      <section class="hero">
-        <div class="hero-inner">
-          <div>
-            <div class="hero-pill">
-              <span class="hero-pill-dot"></span>
-              Applied R&amp;D for training and human performance
-            </div>
-            <h2>Darin Hughes, PhD</h2>
-            <p class="hero-sub">
-              I design and build training technologies that combine conversational AI, simulation environments,
-              sensing systems, and analytics to help people practice complex human interactions. My work spans
-              defense medical training, educator coaching systems, mixed reality simulation, and AI driven
-              learning platforms.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn-primary" href="#projects">View projects</a>
-              <a class="btn-ghost" href="#contact">Contact Hughes Virtual</a>
-            </div>
-
-            <div class="hero-meta">
-              <span>PhD in Modeling and Simulation</span>
-              <span>25+ years building interactive systems</span>
-            </div>
-          </div>
-
-          <aside class="hero-card">
-            <div class="hero-card-header">
-              <div>
-                <div class="hero-card-title">Current emphasis</div>
-                <div class="hero-card-body">
-                  Training systems that connect conversational AI, analytics, XR, medical simulation, and human
-                  performance measurement.
-                </div>
-              </div>
-              <span class="hero-card-tag">Selected scope</span>
-            </div>
-            <ul class="hero-list">
-              <li>
-                <span class="hero-bullet"></span>
-                Conversational AI avatars for educator coaching, leadership practice, and communication training.
-              </li>
-              <li>
-                <span class="hero-bullet"></span>
-                Multimodal tagging, scoring, and after action review tools tied to real training objectives.
-              </li>
-              <li>
-                <span class="hero-bullet"></span>
-                Mixed reality and medical simulation systems that link dialogue, devices, and physiology.
-              </li>
-            </ul>
-            <div class="hero-card-footer">
-              <div class="hero-card-footnote">
-                Work spans defense, education, and healthcare training.
-              </div>
-              <a class="hero-card-link" href="#work">See projects</a>
-            </div>
-          </aside>
+    <section>
+      <h2>Current Work</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>FLITE Coaching ICA</h3>
+          <p class="small">A multimodal instructional communication analyzer that supports evidence-based coaching, reflection, and teacher development.</p>
         </div>
-      </section>
 
+        <div class="card">
+          <h3>AI Conversational Solutions</h3>
+          <p class="small">Conversational AI systems for training, customer interaction, social skills practice, and scenario-based learning.</p>
+        </div>
 
-      <section id="projects" class="content-section">
-  <h3>Selected systems</h3>
-  <p>
-    My current work focuses on AI-supported coaching, multimodal communication analysis,
-    structured debriefing, and simulation-based training. These systems connect research,
-    software engineering, and real-world implementation across education, healthcare,
-    workforce development, and human performance.
-  </p>
+        <div class="card">
+          <h3>DebriefScape</h3>
+          <p class="small">Local-first video review, tagging, and debriefing tools for coaching, simulation, and reflective practice.</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="cards">
-    <div class="card">
-      <h4>FLITE Instruction Communication Analyzer (ICA)</h4>
+    <section>
+      <h2>Leadership</h2>
       <p>
-        AI-enabled multimodal analytics platform for instructional coaching. ICA analyzes
-        recorded teaching and coaching interactions using transcription, speaker identification,
-        discourse analysis, facial affect, vocal sentiment, and synchronized visualizations to
-        support reflective practice and professional development.
+        Hughes Virtual LLC is led by Dr. Darin E. Hughes, a simulation and educational technology developer with more than 25 years of experience across research, software engineering, K-12 education, higher education, medical simulation, and defense-funded training systems.
       </p>
-    </div>
+      <p>
+        The company works with partners and collaborators across universities, industry, and applied research organizations to build technologies that move beyond prototypes and into usable, deployable systems.
+      </p>
+    </section>
 
-<div class="card">
-  <h4>DebriefScape</h4>
-  <p>
-    Web-based platform for structured debriefing, video review, annotation, and performance
-    reflection. DebriefScape supports educator preparation, coaching, simulation-based
-    learning, and professional training through multilingual tools, analytics, and LMS
-    integration.
-  </p>
-</div>
+    <section>
+      <h2>Let’s Build Something Useful</h2>
+      <p>
+        Hughes Virtual works best with teams that have a real training, coaching, or analysis problem and need a practical technical partner to help turn the idea into working software.
+      </p>
+      <a class="button" href="mailto:darinehughes@gmail.com">Start a Conversation</a>
+    </section>
+  </main>
 
-<div class="card">
-  <h4>AICS</h4>
-  <p>
-    Conversational AI platform for practicing real-world interactions with adaptive
-    characters, streaming speech, scenario state tracking, rubric-aligned scoring, and
-    after-action review generation.
-  </p>
-</div>
-
-<div class="card">
-  <h4>M3TS</h4>
-  <p>
-    Mixed reality battlefield medical training system integrating XR environments,
-    physical manikins, and physiology-driven scenarios for point-of-injury care.
-  </p>
-</div>
-
-<div class="card">
-  <h4>BTTC</h4>
-  <p>
-    Battlefield trauma training companion supporting casualty workflow, physiology
-    simulation, and instrumented device integration.
-  </p>
-</div>
-
-<div class="card">
-  <h4>JAKS / BARKS</h4>
-  <p>
-    Simulation platforms for working dog teams combining instrumented manikins,
-    behavioral modeling, and medical intervention training.
-  </p>
-</div>
-
-  </div>
-</section>
-
-        <h3>Capabilities</h3>
-        <p>
-          Hughes Virtual is an applied R&amp;D studio at the intersection of simulation engineering,
-          conversational AI, and extended reality. The focus is on systems where people practice real
-          conversations, receive targeted feedback, and connect those results back to larger training goals.
-        </p>
-
-        <div class="grid" aria-label="Key focus areas">
-          <div class="grid-item">
-            <h4>Conversational training avatars</h4>
-            <p>
-              Scenario based AI characters that let people rehearse conversations and experiment with different
-              approaches. Use cases include:
-            </p>
-            <ul class="list-tight">
-              <li>Teachers practicing conversations with parents or students</li>
-              <li>Leaders and staff preparing for high pressure interactions</li>
-              <li>Trainees working through coaching, de escalation, and support dialogues</li>
-            </ul>
-          </div>
-
-          <div class="grid-item">
-            <h4>Analytics and performance feedback</h4>
-            <p>
-              Training only matters if you can tell whether people are improving. I build:
-            </p>
-            <ul class="list-tight">
-              <li>Rubric aligned scoring pipelines for conversations and scenarios</li>
-              <li>Turn by turn analysis mapped to specific learning objectives</li>
-              <li>Export paths into LRS or LMS systems where needed</li>
-            </ul>
-          </div>
-
-          <div class="grid-item">
-            <h4>Simulation and XR integration</h4>
-            <p>
-              Background in mixed reality, embedded devices, and medical simulation, including:
-            </p>
-            <ul class="list-tight">
-              <li>Linking conversational tools to XR care under fire environments</li>
-              <li>Physiology engine integration for virtual casualties</li>
-              <li>Sensors, BLE devices, and instrumented medical tools for point of injury training</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="pill-row">
-          <span class="pill">Conversational AI</span>
-          <span class="pill">Teacher and trainee coaching</span>
-          <span class="pill">Simulation & XR</span>
-          <span class="pill">Medical training</span>
-          <span class="pill">Analytics & AAR</span>
-          <span class="pill">Research & evaluation</span>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h3>Current work and collaborations</h3>
-        <div class="two-column">
-          <div>
-            <h4>AICS, LLC</h4>
-            <p>
-              I am a co founder and technical lead at
-              <a href="https://aics-sim.com" target="_blank" rel="noreferrer">AICS, LLC</a>, a company focused
-              on conversational AI for practice and coaching. AICS provides web based scenarios with avatars such
-              as Sebastian and Morgan that let users rehearse real situations and receive structured feedback
-              based on research backed rubrics.
-            </p>
-            <p>
-              The platform is built on a custom backend with streaming speech, analysis services, and a front end
-              designed for pilots in classrooms, district programs, and corporate training.
-            </p>
-          </div>
-
-          <div>
-            <h4>Applied simulation R&D</h4>
-            <p>
-              Through Hughes Virtual, I support projects that:
-            </p>
-            <ul class="list-tight">
-              <li>Extend conversational AI into larger training ecosystems and exercises</li>
-              <li>Connect dialogue analytics with XR medical and point of injury simulation systems</li>
-              <li>Design pilots, studies, and evaluation plans for new training tools</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="content-section">
-        <h3>Background</h3>
-        <div class="two-column">
-          <div>
-            <p>
-              Hughes Virtual LLC is my consulting and R&amp;D studio. I work with partners across defense,
-              education, and industry to design conversational AI tools, integrate them with simulations and
-              curricula, and measure how they affect real performance.
-            </p>
-            <p>
-              I hold a PhD in Modeling and Simulation. My work spans conversational coaching platforms, XR medical
-              trainers, point of injury systems for live exercises, serious games, accessible virtual environments,
-              and mixed reality medical training. I have collaborated with partners in the Department of Defense,
-              universities, and industry, and have served as PI or co PI on funded projects across several
-              agencies.
-            </p>
-          </div>
-          <div>
-            <p class="contact-label">Selected strengths</p>
-            <ul class="list-tight">
-              <li>System design for conversational AI and training platforms</li>
-              <li>Scenario design that blends scripted structure with model flexibility</li>
-              <li>Rubric aligned analytics and after action reporting for dialogue</li>
-              <li>Unity based interactive environments and mixed reality scenes</li>
-              <li>Technical writing for proposals, studies, and publications</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="content-section">
-        <h3>Contact</h3>
-        <p>
-          If you are interested in conversational AI pilots, integration with simulation and XR, or advisory work
-          around AI in training, I would be glad to talk.
-        </p>
-        <div class="contact-block">
-          <span>
-            <strong>Email:</strong>
-            <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a>
-          </span>
-          <span>
-            <strong>Location:</strong>
-            Orlando, Florida
-          </span>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© <span id="year"></span> Hughes Virtual LLC</span>
-      <span>Hughes Virtual</span>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <p>© 2026 Hughes Virtual LLC</p>
+  </footer>
 </body>
 </html>

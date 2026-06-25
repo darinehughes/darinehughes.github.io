@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hughes Virtual LLC</title>
+  <meta name="description" content="Hughes Virtual LLC develops applied AI, simulation, communication analytics, and training technologies for education, healthcare, and human performance." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <style>
+    :root {
+      --navy: #101820;
+      --navy-deep: #07111f;
+      --ink: #1f2933;
+      --muted: #52606d;
+      --light: #f7f8fa;
+      --card: #ffffff;
+      --line: #e1e7ec;
+      --cyan: #13c9f5;
+      --blue: #2f80ed;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--light);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 76px 24px 68px;
+      color: white;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(19, 201, 245, 0.22), transparent 30%),
+        radial-gradient(circle at 86% 14%, rgba(47, 128, 237, 0.22), transparent 26%),
+        linear-gradient(145deg, #07111f 0%, #101820 48%, #050a12 100%);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        linear-gradient(115deg, transparent 0%, transparent 44%, rgba(19, 201, 245, 0.14) 45%, transparent 47%),
+        linear-gradient(158deg, transparent 0%, transparent 58%, rgba(47, 128, 237, 0.12) 59%, transparent 61%);
+      pointer-events: none;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border: 1px solid rgba(19, 201, 245, 0.14);
+      border-radius: 50%;
+      top: -280px;
+      right: -240px;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: block;
+      width: 190px;
+      max-width: 44vw;
+      margin: 0 auto 28px;
+      filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.38));
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #8de8ff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin: 0 0 16px;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      letter-spacing: -0.055em;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      color: var(--navy);
+    }
+
+    h3 {
+      color: #243b53;
+    }
+
+    p {
+      max-width: 780px;
+    }
+
+    .tagline {
+      margin: 0 auto;
+      font-size: clamp(1.08rem, 2.2vw, 1.38rem);
+      max-width: 850px;
+      color: #d9e2ec;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 19px;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 750;
+      box-shadow: 0 12px 24px rgba(47, 128, 237, 0.26);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid rgba(217, 226, 236, 0.36);
+      box-shadow: none;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .contact-email {
+      margin: 22px auto 0;
+      color: #d9e2ec;
+      font-size: 0.98rem;
+    }
+
+    .contact-email a {
+      color: #8de8ff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 52px 24px 44px;
+    }
+
+    section {
+      margin-bottom: 58px;
+    }
+
+    .intro {
+      font-size: 1.08rem;
+      color: #334e68;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(16, 24, 32, 0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .small {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #ffffff 0%, #eef9fd 100%);
+      border: 1px solid #cceefa;
+      border-radius: 18px;
+      padding: 26px;
+    }
+
+    .banner p {
+      margin-bottom: 0;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #d9e2ec;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0 auto;
+    }
+
+    footer a {
+      color: #8de8ff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        min-height: auto;
+        padding: 56px 20px 50px;
+      }
+
+      .logo {
+        width: 145px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      main {
+        padding-top: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="hero">
+      <img class="logo" src="assets/hv-logo.svg" alt="Hughes Virtual logo" />
+
+      <p class="eyebrow">Applied AI • Simulation • Human Performance</p>
+
+      <h1>Hughes Virtual LLC</h1>
+
+      <p class="tagline">
+        We build practical AI, simulation, communication analytics, and training technologies for education, healthcare, research, and human performance.
+      </p>
+
+      <div class="actions">
+        <a class="button" href="mailto:darinehughes@gmail.com">Contact Hughes Virtual</a>
+        <a class="button secondary" href="#work">View Our Work</a>
+      </div>
+
+      <p class="contact-email">
+        Email directly:
+        <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>What We Do</h2>
+      <p class="intro">
+        Hughes Virtual LLC is a research and development company focused on turning advanced simulation, artificial intelligence, and educational technology concepts into usable systems. We support universities, government partners, healthcare programs, and commercial teams developing tools for training, coaching, reflection, and performance improvement.
+      </p>
+    </section>
+
+    <section>
+      <h2>Areas of Practice</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Conversational AI</h3>
+          <p class="small">Scenario-based virtual humans, role-play systems, coaching agents, and AI-supported training environments.</p>
+        </div>
+
+        <div class="card">
+          <h3>Communication Analytics</h3>
+          <p class="small">Tools for analyzing discourse, feedback, questioning, emotion, interaction patterns, and coaching conversations.</p>
+        </div>
+
+        <div class="card">
+          <h3>Simulation and Training</h3>
+          <p class="small">Custom software for medical simulation, education, emergency response, defense training, and human performance.</p>
+        </div>
+
+        <div class="card">
+          <h3>XR and Immersive Learning</h3>
+          <p class="small">Extended reality systems, virtual environments, and interactive learning tools for complex practice-based skills.</p>
+        </div>
+
+        <div class="card">
+          <h3>Research Software Development</h3>
+          <p class="small">Prototype development, productization, data pipelines, dashboards, evaluation tools, and deployment support.</p>
+        </div>
+
+        <div class="card">
+          <h3>Technology Transition</h3>
+          <p class="small">Support for SBIR/STTR efforts, commercialization planning, proposal development, and research-to-product transition.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>Current Work</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>FLITE Coaching ICA</h3>
+          <p class="small">A multimodal instructional communication analyzer that supports evidence-based coaching, reflection, and teacher development.</p>
+        </div>
+
+        <div class="card">
+          <h3>AI Conversational Solutions</h3>
+          <p class="small">Conversational AI systems for training, customer interaction, social skills practice, and scenario-based learning.</p>
+        </div>
+
+        <div class="card">
+          <h3>DebriefScape</h3>
+          <p class="small">Local-first video review, tagging, and debriefing tools for coaching, simulation, and reflective practice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner">
+      <h2>Built for Research, Training, and Deployment</h2>
+      <p class="intro">
+        Hughes Virtual works at the intersection of research software, applied AI, simulation, and instructional systems. Our goal is to help partners move from promising concepts to reliable tools that people can actually use.
+      </p>
+    </section>
+
+    <section>
+      <h2>Leadership</h2>
+      <p class="intro">
+        Hughes Virtual LLC is led by Dr. Darin E. Hughes, a simulation and educational technology developer with more than 25 years of experience across research, software engineering, K-12 education, higher education, medical simulation, and defense-funded training systems.
+      </p>
+      <p class="intro">
+        The company works with partners and collaborators across universities, industry, and applied research organizations to build technologies that move beyond prototypes and into usable, deployable systems.
+      </p>
+    </section>
+
+    <section>
+      <h2>Let’s Build Something Useful</h2>
+      <p class="intro">
+        Hughes Virtual works best with teams that have a real training, coaching, or analysis problem and need a practical technical partner to help turn the idea into working software.
+      </p>
+
+      <div class="actions" style="justify-content: flex-start;">
+        <a class="button" href="mailto:darinehughes@gmail.com">Start a Conversation</a>
+      </div>
+
+      <p class="intro">
+        Email:
+        <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Hughes Virtual LLC • <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a></p>
+  </footer>
+</body>
+</html>

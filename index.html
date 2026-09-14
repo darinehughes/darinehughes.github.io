@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hughes Virtual LLC</title>
-  <meta name="description" content="Hughes Virtual LLC develops applied AI, simulation, communication analytics, and training technologies for education, healthcare, and human performance." />
+  <title>Hughes Virtual | Simulation and Applied AI for Training</title>
+  <meta name="description" content="Hughes Virtual builds working simulation, conversational AI, and communication analysis tools for educators, researchers, and training teams. Explore TeachLivE, FLITE, and our AICS collaboration." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
@@ -208,6 +208,44 @@
       margin-bottom: 10px;
     }
 
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid var(--blue);
+    }
+
+    .work-card:nth-child(2) { border-top-color: #19a4c4; }
+    .work-card:nth-child(3) { border-top-color: #3b9a8c; }
+    .work-card:nth-child(4) { border-top-color: #7482b8; }
+
+    .work-card .small { flex: 1; }
+
+    .work-label {
+      margin: 0 0 12px;
+      color: #345d7a;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .work-link {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 18px;
+      color: #145c9b;
+      font-weight: 750;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .work-link:hover { color: #0b365a; }
+
+    a:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
     .small {
       margin: 0;
       font-size: 0.96rem;
@@ -277,17 +315,17 @@
     <div class="hero">
       <img class="logo" src="assets/hv-logo.svg" alt="Hughes Virtual logo" />
 
-      <p class="eyebrow">Applied AI • Simulation • Human Performance</p>
+      <p class="eyebrow">Simulation • Applied AI • Training</p>
 
       <h1>Hughes Virtual LLC</h1>
 
       <p class="tagline">
-        We build practical AI, simulation, communication analytics, and training technologies for education, healthcare, research, and human performance.
+        We turn research ideas into working tools for practice, coaching, and human performance.
       </p>
 
       <div class="actions">
-        <a class="button" href="mailto:darinehughes@gmail.com">Contact Hughes Virtual</a>
-        <a class="button secondary" href="#work">View Our Work</a>
+        <a class="button" href="#work">Explore Our Work</a>
+        <a class="button secondary" href="mailto:darinehughes@gmail.com">Contact Hughes Virtual</a>
       </div>
 
       <p class="contact-email">
@@ -298,10 +336,41 @@
   </header>
 
   <main>
+    <section id="work">
+      <h2>Work you can point to</h2>
+      <p class="intro">We build and support practical tools with the teams who use them. Here are the projects shaping our work today.</p>
+      <div class="grid">
+        <div class="card work-card">
+          <p class="work-label">Interactive simulation</p>
+          <h3>TeachLivE</h3>
+          <p class="small">Unity-based classroom simulations for educator practice. Our current work includes ABA training interactions, live interactor controls, and reliable Windows and VR testing.</p>
+        </div>
+
+        <div class="card work-card">
+          <p class="work-label">Communication analysis</p>
+          <h3>FLITE Coaching ICA</h3>
+          <p class="small">A multimodal instructional communication analyzer for evidence-based coaching, reflection, and teacher development.</p>
+        </div>
+
+        <div class="card work-card">
+          <p class="work-label">Collaborative AI development</p>
+          <h3>AICS simulations</h3>
+          <p class="small">We collaborate with AICS on adaptive conversation practice. Its live beta lets visitors speak with Mateo Cruz in customer-service scenarios or Morgan White in a school conversation.</p>
+          <a class="work-link" href="https://aics-sim.com/">Explore the AICS beta ↗</a>
+        </div>
+
+        <div class="card work-card">
+          <p class="work-label">Video debriefing</p>
+          <h3>DebriefScape</h3>
+          <p class="small">Local-first video review, tagging, and debriefing tools for coaching, simulation, and reflective practice.</p>
+        </div>
+      </div>
+    </section>
+
     <section>
       <h2>What We Do</h2>
       <p class="intro">
-        Hughes Virtual LLC is a research and development company focused on turning advanced simulation, artificial intelligence, and educational technology concepts into usable systems. We support universities, government partners, healthcare programs, and commercial teams developing tools for training, coaching, reflection, and performance improvement.
+        Hughes Virtual LLC is a research and development partner for education, healthcare, and training teams. We design simulation experiences, build applied AI and communication analysis tools, and help move promising ideas into systems people can use.
       </p>
     </section>
 
@@ -309,53 +378,16 @@
       <h2>Areas of Practice</h2>
       <div class="grid">
         <div class="card">
+          <h3>Simulation and XR</h3>
+          <p class="small">Interactive practice environments, virtual humans, Unity development, and immersive training tools.</p>
+        </div>
+        <div class="card">
           <h3>Conversational AI</h3>
-          <p class="small">Scenario-based virtual humans, role-play systems, coaching agents, and AI-supported training environments.</p>
+          <p class="small">Adaptive role-play and scenario-based learning grounded in real training objectives.</p>
         </div>
-
         <div class="card">
-          <h3>Communication Analytics</h3>
-          <p class="small">Tools for analyzing discourse, feedback, questioning, emotion, interaction patterns, and coaching conversations.</p>
-        </div>
-
-        <div class="card">
-          <h3>Simulation and Training</h3>
-          <p class="small">Custom software for medical simulation, education, emergency response, defense training, and human performance.</p>
-        </div>
-
-        <div class="card">
-          <h3>XR and Immersive Learning</h3>
-          <p class="small">Extended reality systems, virtual environments, and interactive learning tools for complex practice-based skills.</p>
-        </div>
-
-        <div class="card">
-          <h3>Research Software Development</h3>
-          <p class="small">Prototype development, productization, data pipelines, dashboards, evaluation tools, and deployment support.</p>
-        </div>
-
-        <div class="card">
-          <h3>Technology Transition</h3>
-          <p class="small">Support for SBIR/STTR efforts, commercialization planning, proposal development, and research-to-product transition.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="work">
-      <h2>Current Work</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>FLITE Coaching ICA</h3>
-          <p class="small">A multimodal instructional communication analyzer that supports evidence-based coaching, reflection, and teacher development.</p>
-        </div>
-
-        <div class="card">
-          <h3>AI Conversational Solutions</h3>
-          <p class="small">Conversational AI systems for training, customer interaction, social skills practice, and scenario-based learning.</p>
-        </div>
-
-        <div class="card">
-          <h3>DebriefScape</h3>
-          <p class="small">Local-first video review, tagging, and debriefing tools for coaching, simulation, and reflective practice.</p>
+          <h3>Analysis and research software</h3>
+          <p class="small">Communication analysis, coaching tools, video debriefing, prototypes, and deployment support.</p>
         </div>
       </div>
     </section>

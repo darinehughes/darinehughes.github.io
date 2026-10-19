@@ -1,433 +1,487 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hughes Virtual | Simulation and Applied AI for Training</title>
-  <meta name="description" content="Hughes Virtual builds working simulation, conversational AI, and communication analysis tools for educators, researchers, and training teams. Explore TeachLivE, FLITE, and our AICS collaboration." />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-  <style>
-    :root {
-      --navy: #101820;
-      --navy-deep: #07111f;
-      --ink: #1f2933;
-      --muted: #52606d;
-      --light: #f7f8fa;
-      --card: #ffffff;
-      --line: #e1e7ec;
-      --cyan: #13c9f5;
-      --blue: #2f80ed;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      color: var(--ink);
-      background: var(--light);
-    }
-
-    header {
-      position: relative;
-      overflow: hidden;
-      min-height: 72vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 76px 24px 68px;
-      color: white;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(19, 201, 245, 0.22), transparent 30%),
-        radial-gradient(circle at 86% 14%, rgba(47, 128, 237, 0.22), transparent 26%),
-        linear-gradient(145deg, #07111f 0%, #101820 48%, #050a12 100%);
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background:
-        linear-gradient(115deg, transparent 0%, transparent 44%, rgba(19, 201, 245, 0.14) 45%, transparent 47%),
-        linear-gradient(158deg, transparent 0%, transparent 58%, rgba(47, 128, 237, 0.12) 59%, transparent 61%);
-      pointer-events: none;
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      width: 720px;
-      height: 720px;
-      border: 1px solid rgba(19, 201, 245, 0.14);
-      border-radius: 50%;
-      top: -280px;
-      right: -240px;
-      pointer-events: none;
-    }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: block;
-      width: 190px;
-      max-width: 44vw;
-      margin: 0 auto 28px;
-      filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.38));
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #8de8ff;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      margin: 0 0 16px;
-    }
-
-    h1 {
-      margin-bottom: 18px;
-      font-size: clamp(2.7rem, 7vw, 5.4rem);
-      letter-spacing: -0.055em;
-    }
-
-    h2 {
-      font-size: clamp(1.75rem, 4vw, 2.35rem);
-      color: var(--navy);
-    }
-
-    h3 {
-      color: #243b53;
-    }
-
-    p {
-      max-width: 780px;
-    }
-
-    .tagline {
-      margin: 0 auto;
-      font-size: clamp(1.08rem, 2.2vw, 1.38rem);
-      max-width: 850px;
-      color: #d9e2ec;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 13px 19px;
-      background: var(--blue);
-      color: white;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 750;
-      box-shadow: 0 12px 24px rgba(47, 128, 237, 0.26);
-    }
-
-    .button.secondary {
-      background: transparent;
-      border: 1px solid rgba(217, 226, 236, 0.36);
-      box-shadow: none;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-    }
-
-    .contact-email {
-      margin: 22px auto 0;
-      color: #d9e2ec;
-      font-size: 0.98rem;
-    }
-
-    .contact-email a {
-      color: #8de8ff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .contact-email a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 52px 24px 44px;
-    }
-
-    section {
-      margin-bottom: 58px;
-    }
-
-    .intro {
-      font-size: 1.08rem;
-      color: #334e68;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 8px 22px rgba(16, 24, 32, 0.05);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .work-card {
-      display: flex;
-      flex-direction: column;
-      border-top: 4px solid var(--blue);
-    }
-
-    .work-card:nth-child(2) { border-top-color: #19a4c4; }
-    .work-card:nth-child(3) { border-top-color: #3b9a8c; }
-    .work-card:nth-child(4) { border-top-color: #7482b8; }
-
-    .work-card .small { flex: 1; }
-
-    .work-label {
-      margin: 0 0 12px;
-      color: #345d7a;
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .work-link {
-      display: inline-block;
-      align-self: flex-start;
-      margin-top: 18px;
-      color: #145c9b;
-      font-weight: 750;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .work-link:hover { color: #0b365a; }
-
-    a:focus-visible {
-      outline: 3px solid var(--cyan);
-      outline-offset: 4px;
-    }
-
-    .small {
-      margin: 0;
-      font-size: 0.96rem;
-      color: var(--muted);
-    }
-
-    .banner {
-      background: linear-gradient(135deg, #ffffff 0%, #eef9fd 100%);
-      border: 1px solid #cceefa;
-      border-radius: 18px;
-      padding: 26px;
-    }
-
-    .banner p {
-      margin-bottom: 0;
-    }
-
-    footer {
-      background: var(--navy);
-      color: #d9e2ec;
-      padding: 30px 24px;
-      text-align: center;
-    }
-
-    footer p {
-      margin: 0 auto;
-    }
-
-    footer a {
-      color: #8de8ff;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 640px) {
-      header {
-        min-height: auto;
-        padding: 56px 20px 50px;
-      }
-
-      .logo {
-        width: 145px;
-      }
-
-      .actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      main {
-        padding-top: 42px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="hero">
-      <img class="logo" src="assets/hv-logo.svg" alt="Hughes Virtual logo" />
-
-      <p class="eyebrow">Simulation • Applied AI • Training</p>
-
-      <h1>Hughes Virtual LLC</h1>
-
-      <p class="tagline">
-        We turn research ideas into working tools for practice, coaching, and human performance.
-      </p>
-
-      <div class="actions">
-        <a class="button" href="#work">Explore Our Work</a>
-        <a class="button secondary" href="mailto:darinehughes@gmail.com">Contact Hughes Virtual</a>
-      </div>
-
-      <p class="contact-email">
-        Email directly:
-        <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a>
-      </p>
-    </div>
-  </header>
-
-  <main>
-    <section id="work">
-      <h2>Work you can point to</h2>
-      <p class="intro">We build and support practical tools with the teams who use them. Here are the projects shaping our work today.</p>
-      <div class="grid">
-        <div class="card work-card">
-          <p class="work-label">Interactive simulation</p>
-          <h3>TeachLivE</h3>
-          <p class="small">Unity-based classroom simulations for educator practice. Our current work includes ABA training interactions, live interactor controls, and reliable Windows and VR testing.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hughes Virtual | Working software. Human possibility.</title>
+    <meta
+      name="description"
+      content="Explore working software from Hughes Virtual: AICS conversational training, TeachLivE development, FLITE STEM Coaching support, DebriefScape, and Pantheon, a god-simulation game in development."
+    />
+    <meta name="theme-color" content="#101820" />
+    <link rel="canonical" href="https://darinehughes.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Hughes Virtual — Working software. Human possibility."
+    />
+    <meta
+      property="og:description"
+      content="Simulation, coaching tools, and worlds worth exploring. See the software we help build."
+    />
+    <meta property="og:url" content="https://darinehughes.github.io/" />
+    <meta
+      property="og:image"
+      content="https://darinehughes.github.io/assets/social-preview.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Hughes Virtual: a TeachLivE virtual classroom and an island in Pantheon."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#top" aria-label="Hughes Virtual home"
+        ><img src="assets/hv-logo.svg" width="48" height="48" alt="" /><span
+          >HUGHES <strong>VIRTUAL</strong
+          ><small>ENGINEERING &amp; CREATIVE DEVELOPMENT</small></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#work">Our work</a><a href="#workshop">The workshop</a
+        ><a href="#about">About</a
+        ><a class="nav-contact" href="#contact">Let’s talk ↗</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="signal" aria-hidden="true"></span> SIMULATION /
+            COACHING / PLAY
+          </p>
+          <h1 id="hero-title">Software you<br />can <em>step into.</em></h1>
+          <p class="lede">
+            Virtual humans to practice with. Tools to reflect and learn. Living
+            worlds to explore.
+          </p>
+          <p>
+            Hughes Virtual turns research and creative ideas into working
+            software, in collaboration with the people who use it.
+          </p>
+          <a class="button" href="#work"
+            >Explore the work <span aria-hidden="true">↓</span></a
+          >
         </div>
-
-        <div class="card work-card">
-          <p class="work-label">Communication analysis</p>
-          <h3>FLITE Coaching ICA</h3>
-          <p class="small">A multimodal instructional communication analyzer for evidence-based coaching, reflection, and teacher development.</p>
+        <figure class="hero-figure">
+          <a
+            class="image-link"
+            href="#teachlive"
+            aria-label="Explore our TeachLivE development work"
+            ><img
+              src="assets/projects/teachlive-1280.webp"
+              srcset="
+                assets/projects/teachlive-640.webp   640w,
+                assets/projects/teachlive-1280.webp 1200w
+              "
+              sizes="(max-width:760px) 90vw, 50vw"
+              width="1200"
+              height="900"
+              fetchpriority="high"
+              alt="Five virtual students seated around tables in the TeachLivE high-school classroom."
+          /></a>
+          <figcaption>
+            <span
+              ><b>Inside TeachLivE</b> / A virtual classroom for real
+              practice</span
+            ><a href="#teachlive" aria-label="Read about TeachLivE">↘</a>
+          </figcaption>
+        </figure>
+      </section>
+      <section class="work wrap" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SELECTED WORK</p>
+            <h2 id="work-title">Built to be used.</h2>
+          </div>
+          <p>
+            Products and collaborative development.<br />Real interfaces. Real
+            places to begin.
+          </p>
         </div>
-
-        <div class="card work-card">
-          <p class="work-label">Collaborative AI development</p>
-          <h3>AICS simulations</h3>
-          <p class="small">We collaborate with AICS on adaptive conversation practice. Its live beta lets visitors speak with Mateo Cruz in customer-service scenarios or Morgan White in a school conversation.</p>
-          <a class="work-link" href="https://aics-sim.com/">Explore the AICS beta ↗</a>
+        <nav class="project-index" aria-label="Project navigation">
+          <a href="#aics">01 <span>AICS</span></a
+          ><a href="#teachlive">02 <span>TeachLivE</span></a
+          ><a href="#flite">03 <span>FLITE STEM Coaching</span></a
+          ><a href="#debriefscape">04 <span>DebriefScape</span></a
+          ><a href="#workshop">05 <span>Pantheon</span></a>
+        </nav>
+        <article class="project" id="aics" aria-labelledby="aics-title">
+          <div class="project-copy">
+            <p class="project-number">01 / CONVERSATIONAL TRAINING</p>
+            <h3 id="aics-title">AICS</h3>
+            <p class="subtitle">AI Conversational Solutions</p>
+            <p class="project-summary">
+              A place to practice the conversation before it matters.
+            </p>
+            <p>
+              Step into a scenario, respond to a virtual human by voice or text,
+              and review feedback from the exchange. Open conversations offer a
+              separate, unscored way to explore a persona.
+            </p>
+            <p class="contribution">
+              <b>Our role</b> Collaborative development of the conversation
+              experience, animated characters, and scenario feedback.
+            </p>
+            <span class="status">Public prototype</span
+            ><a class="text-link" href="https://aics-sim.com/"
+              >Explore AICS ↗</a
+            >
+          </div>
+          <div class="project-images">
+            <figure>
+              <a
+                class="image-link"
+                href="assets/projects/aics-3d-1280.webp"
+                aria-label="Open full AICS 3D screenshot"
+                ><img
+                  src="assets/projects/aics-3d-1280.webp"
+                  srcset="
+                    assets/projects/aics-3d-640.webp   640w,
+                    assets/projects/aics-3d-1280.webp 1167w
+                  "
+                  sizes="(max-width:760px) 90vw, 58vw"
+                  width="1167"
+                  height="903"
+                  loading="lazy"
+                  decoding="async"
+                  alt="AICS 3D airline-passenger scenario with Ryan Keller in an aircraft cabin, alongside voice and text controls."
+              /></a>
+              <figcaption>
+                <span>Ryan Keller / 3D scenario, ready to begin</span
+                ><a href="assets/projects/aics-3d-1280.webp">View larger ↗</a>
+              </figcaption>
+            </figure>
+            <figure class="feedback">
+              <a
+                class="image-link"
+                href="assets/projects/aics-feedback-1280.webp"
+                aria-label="Open full AICS feedback screenshot"
+                ><img
+                  src="assets/projects/aics-feedback-640.webp"
+                  srcset="
+                    assets/projects/aics-feedback-640.webp   640w,
+                    assets/projects/aics-feedback-1280.webp 1175w
+                  "
+                  sizes="(max-width:760px) 90vw, 40vw"
+                  width="1175"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                  alt="AICS after-action review from a development test, showing strengths, next steps, and skill results."
+              /></a>
+              <figcaption>
+                <span>After-action review / Development test</span
+                ><a href="assets/projects/aics-feedback-1280.webp"
+                  >View larger ↗</a
+                >
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+        <article
+          class="project reverse"
+          id="teachlive"
+          aria-labelledby="teachlive-title"
+        >
+          <div class="project-copy">
+            <p class="project-number">02 / CLASSROOM SIMULATION</p>
+            <h3 id="teachlive-title">TeachLivE</h3>
+            <p class="project-summary">
+              A virtual classroom.<br />A human learning experience.
+            </p>
+            <p>
+              Educators rehearse instruction and classroom interactions with
+              virtual students in a repeatable simulation environment.
+            </p>
+            <p class="contribution">
+              <b>Our role</b> Darin contributes development and modernization
+              across Unity 6, interactor controls, networking, and Windows/VR
+              integration.
+            </p>
+            <p class="credit">
+              TeachLivE is a collaborative UCF-developed platform. Hughes
+              Virtual contributes engineering to this ongoing body of work.
+            </p>
+            <span class="status">Collaborative development</span
+            ><a
+              class="text-link"
+              href="https://www.ucf.edu/research/research-project/teachlive/"
+              >About TeachLivE at UCF ↗</a
+            >
+          </div>
+          <figure>
+            <a
+              class="image-link"
+              href="assets/projects/teachlive-1280.webp"
+              aria-label="Open full TeachLivE classroom screenshot"
+              ><img
+                src="assets/projects/teachlive-1280.webp"
+                srcset="
+                  assets/projects/teachlive-640.webp   640w,
+                  assets/projects/teachlive-1280.webp 1200w
+                "
+                sizes="(max-width:760px) 90vw, 58vw"
+                width="1200"
+                height="900"
+                loading="lazy"
+                decoding="async"
+                alt="TeachLivE high-school classroom running in a local Unity build, with five virtual students at tables."
+            /></a>
+            <figcaption>
+              <span>High-school classroom / Local runtime capture</span
+              ><a href="assets/projects/teachlive-1280.webp">View larger ↗</a>
+            </figcaption>
+          </figure>
+        </article>
+        <article class="project" id="flite" aria-labelledby="flite-title">
+          <div class="project-copy">
+            <p class="project-number">03 / COACHING RESOURCES</p>
+            <h3 id="flite-title">FLITE STEM<br />Coaching</h3>
+            <p class="project-summary">
+              The right resource for the next coaching conversation.
+            </p>
+            <p>
+              A public resource hub for educators and coaches: search teaching
+              resources, explore the coaching cycle, and find observation tools
+              and training videos.
+            </p>
+            <p class="contribution">
+              <b>Our role</b> Website operations, hosting infrastructure, and
+              technical support for the coaching resource site.
+            </p>
+            <p class="credit">
+              The FLITE STEM Coaching website is distinct from the FLITE/ICA
+              communication analyzer.
+            </p>
+            <span class="status">Public resource website</span
+            ><a class="text-link" href="https://flitestemcoaching.org/"
+              >Explore the resources ↗</a
+            >
+          </div>
+          <figure>
+            <a
+              class="image-link"
+              href="assets/projects/flite-1280.webp"
+              aria-label="Open full FLITE STEM Coaching screenshot"
+              ><img
+                src="assets/projects/flite-1280.webp"
+                srcset="
+                  assets/projects/flite-640.webp   640w,
+                  assets/projects/flite-1280.webp 1127w
+                "
+                sizes="(max-width:760px) 90vw, 58vw"
+                width="1127"
+                height="950"
+                loading="lazy"
+                decoding="async"
+                alt="FLITE STEM Coaching resource suggestions for feedback, including articles and videos with practice and duration labels."
+            /></a>
+            <figcaption>
+              <span>Resource discovery / Live search for “feedback”</span
+              ><a href="assets/projects/flite-1280.webp">View larger ↗</a>
+            </figcaption>
+          </figure>
+        </article>
+        <article
+          class="project reverse"
+          id="debriefscape"
+          aria-labelledby="ds-title"
+        >
+          <div class="project-copy">
+            <p class="project-number">04 / OBSERVATION &amp; REFLECTION</p>
+            <h3 id="ds-title">DebriefScape</h3>
+            <p class="project-summary">
+              Turn recorded moments into a useful debrief.
+            </p>
+            <p>
+              Review video, add tags along a timeline, and explore patterns in
+              an observation session. Custom categories and checklists support
+              different coaching questions.
+            </p>
+            <p class="contribution">
+              <b>Our role</b> Ongoing development and technical support for this
+              collaborative research tool.
+            </p>
+            <p class="credit">
+              The local-first workflow reads video and session files from a
+              folder you select, and writes annotations locally. The public site
+              and integrations have their own access flows.
+            </p>
+            <span class="status">Public observation tool</span
+            ><a class="text-link" href="https://debriefscape.org/"
+              >Explore DebriefScape ↗</a
+            >
+          </div>
+          <figure>
+            <a
+              class="image-link"
+              href="assets/projects/debriefscape-1920.webp"
+              aria-label="Open full DebriefScape interface screenshot"
+              ><img
+                src="assets/projects/debriefscape-1280.webp"
+                srcset="
+                  assets/projects/debriefscape-640.webp   640w,
+                  assets/projects/debriefscape-1280.webp 1280w,
+                  assets/projects/debriefscape-1920.webp 1920w
+                "
+                sizes="(max-width:760px) 90vw, 58vw"
+                width="1280"
+                height="847"
+                loading="lazy"
+                decoding="async"
+                alt="Published DebriefScape Live example with observation categories for learning environment, feedback, and instructional design; no recording or participant data is loaded."
+            /></a>
+            <figcaption>
+              <span>Published interface example / Tags before capture</span
+              ><a href="assets/projects/debriefscape-1920.webp"
+                >View larger ↗</a
+              >
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+      <section class="workshop" id="workshop" aria-labelledby="pantheon-title">
+        <div class="wrap">
+          <div class="workshop-heading">
+            <p class="eyebrow">05 / FROM THE WORKSHOP</p>
+            <span class="status">In development</span>
+          </div>
+          <div class="workshop-intro">
+            <div>
+              <h2 id="pantheon-title">
+                Pantheon<span aria-hidden="true">.</span>
+              </h2>
+              <p class="workshop-tagline">A small world. A long story.</p>
+            </div>
+            <div>
+              <p>
+                Our passion project: an evolving god-simulation game about
+                guiding island communities and caring for the lives within them.
+              </p>
+              <p>
+                Built in Godot, the current development build includes village
+                work and construction, families and lasting histories, supply
+                voyages, and Moss. Our longer-term ambition is a richer world
+                shaped by the player’s care.
+              </p>
+              <a
+                class="text-link"
+                href="mailto:darinehughes@gmail.com?subject=Pantheon%20development%20demo"
+                >Ask about Pantheon ↗</a
+              >
+            </div>
+          </div>
+          <figure class="landscape">
+            <a
+              class="image-link"
+              href="assets/projects/pantheon-1920.webp"
+              aria-label="Open full Pantheon island screenshot"
+              ><img
+                src="assets/projects/pantheon-1920.webp"
+                srcset="
+                  assets/projects/pantheon-640.webp   640w,
+                  assets/projects/pantheon-1280.webp 1280w,
+                  assets/projects/pantheon-1920.webp 1920w
+                "
+                sizes="90vw"
+                width="1920"
+                height="930"
+                loading="lazy"
+                decoding="async"
+                alt="In-engine Pantheon view of a wooded island with cottages, villagers, Moss, and blue coastal water."
+            /></a>
+            <figcaption>
+              <span
+                >In-engine development capture / Island life in Pantheon</span
+              ><a href="assets/projects/pantheon-1920.webp">View larger ↗</a>
+            </figcaption>
+          </figure>
+          <div class="workshop-detail">
+            <figure>
+              <a
+                class="image-link"
+                href="assets/projects/pantheon-village-1920.webp"
+                aria-label="Open Pantheon village detail screenshot"
+                ><img
+                  src="assets/projects/pantheon-village-1280.webp"
+                  srcset="
+                    assets/projects/pantheon-village-640.webp   640w,
+                    assets/projects/pantheon-village-1280.webp 1280w
+                  "
+                  sizes="(max-width:760px) 90vw, 43vw"
+                  width="1920"
+                  height="930"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Closer in-engine view of Pantheon’s cottages and villagers around a village monument."
+              /></a>
+              <figcaption>Village detail / Actual development build</figcaption>
+            </figure>
+            <div>
+              <p class="eyebrow">A HUGHES VIRTUAL ORIGINAL</p>
+              <h3>Engineering meets<br />a little wonder.</h3>
+              <p>
+                Pantheon is a place to explore our creative range: simulation
+                systems, world building, and the details that make a digital
+                place feel alive.
+              </p>
+              <p class="credit">
+                A playable development build, still evolving. Release timing,
+                distribution, and future features are not yet announced.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div class="card work-card">
-          <p class="work-label">Video debriefing</p>
-          <h3>DebriefScape</h3>
-          <p class="small">Local-first video review, tagging, and debriefing tools for coaching, simulation, and reflective practice.</p>
+      </section>
+      <section class="about wrap" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">THE PEOPLE BEHIND THE WORK</p>
+          <h2 id="about-title">Small studio.<br />Deep experience.</h2>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>What We Do</h2>
-      <p class="intro">
-        Hughes Virtual LLC is a research and development partner for education, healthcare, and training teams. We design simulation experiences, build applied AI and communication analysis tools, and help move promising ideas into systems people can use.
-      </p>
-    </section>
-
-    <section>
-      <h2>Areas of Practice</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Simulation and XR</h3>
-          <p class="small">Interactive practice environments, virtual humans, Unity development, and immersive training tools.</p>
+        <div>
+          <h3>Dr. Darin E. Hughes</h3>
+          <p class="founder">FOUNDER / HUGHES VIRTUAL LLC</p>
+          <p>
+            Darin brings more than 25 years of experience across simulation,
+            software engineering, educational technology, medical simulation,
+            and training research.
+          </p>
+          <p>
+            Hughes Virtual works with university, research, and industry
+            collaborators to move ideas into usable systems.
+          </p>
+          <div class="capabilities">
+            <span>Simulation &amp; XR</span><span>Conversational AI</span
+            ><span>Research software</span><span>Product engineering</span>
+          </div>
         </div>
-        <div class="card">
-          <h3>Conversational AI</h3>
-          <p class="small">Adaptive role-play and scenario-based learning grounded in real training objectives.</p>
-        </div>
-        <div class="card">
-          <h3>Analysis and research software</h3>
-          <p class="small">Communication analysis, coaching tools, video debriefing, prototypes, and deployment support.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="banner">
-      <h2>Built for Research, Training, and Deployment</h2>
-      <p class="intro">
-        Hughes Virtual works at the intersection of research software, applied AI, simulation, and instructional systems. Our goal is to help partners move from promising concepts to reliable tools that people can actually use.
-      </p>
-    </section>
-
-    <section>
-      <h2>Leadership</h2>
-      <p class="intro">
-        Hughes Virtual LLC is led by Dr. Darin E. Hughes, a simulation and educational technology developer with more than 25 years of experience across research, software engineering, K-12 education, higher education, medical simulation, and defense-funded training systems.
-      </p>
-      <p class="intro">
-        The company works with partners and collaborators across universities, industry, and applied research organizations to build technologies that move beyond prototypes and into usable, deployable systems.
-      </p>
-    </section>
-
-    <section>
-      <h2>Let’s Build Something Useful</h2>
-      <p class="intro">
-        Hughes Virtual works best with teams that have a real training, coaching, or analysis problem and need a practical technical partner to help turn the idea into working software.
-      </p>
-
-      <div class="actions" style="justify-content: flex-start;">
-        <a class="button" href="mailto:darinehughes@gmail.com">Start a Conversation</a>
-      </div>
-
-      <p class="intro">
-        Email:
-        <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a>
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Hughes Virtual LLC • <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com</a></p>
-  </footer>
-</body>
+      </section>
+      <section
+        class="contact wrap"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <p class="eyebrow">LET’S BUILD SOMETHING USEFUL</p>
+        <h2 id="contact-title">What are you<br />working toward?</h2>
+        <p>
+          A training challenge, a research tool, or an idea that needs to become
+          real. Start a conversation.
+        </p>
+        <a href="mailto:darinehughes@gmail.com">darinehughes@gmail.com ↗</a>
+      </section>
+    </main>
+    <footer class="wrap">
+      <span>© 2026 Hughes Virtual LLC</span
+      ><span>Built with curiosity. Grounded in working software.</span
+      ><a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
 </html>

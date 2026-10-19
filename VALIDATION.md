@@ -1,28 +1,22 @@
-# Refresh verification — 2026-10-19
+# Portfolio verification — 2026-10-19
 
-## Result
+## Reviewed refresh
 
-Ready for local review. No push, production deployment, DNS change, or source-project edit was performed.
+The initial five-project refresh was reviewed on desktop and mobile, including image loading, keyboard skip/focus, native anchors, contact URLs and social metadata. Widths 320, 390, 768 and 1440 had no horizontal overflow. The computed text contrast audit had no failures (minimum 5.06:1). Existing icons, identity, domain settings and the unlinked legacy HTML were preserved. There is no framework build or existing test suite; the site is buildless HTML/CSS.
 
-## Checks completed
+## Loaded-video DebriefScape replacement
 
-- `python tools/check_site.py`: pass. Five project anchors, unique ids, local asset references, responsive image sources, descriptive image alt text, intrinsic dimensions, lazy loading for below-fold images, contact action and social image.
+- Actual unchanged local DebriefScape distribution rendered through an isolated Playwright Chrome profile with requests restricted to localhost. Native OPFS fixture files were passed to the app's existing folder loader; its actual player, CSV parsers, timeline and legend rendered the result. Existing browser profiles, sessions and source-project files were not changed.
+- Video: 1920 × 1080, duration 30.036 seconds, paused at approximately 18.77 seconds, `readyState: 4`. A decoded bird-on-branch frame is visible, with no loading spinner or toast. Two synthetic annotation tracks are shown. No participant, interview or research footage was used; no recording or facial analysis was run.
+- Source capture: 1920 × 1474; public crop: 1920 × 1321. WebP variants at 640, 1280 and 1920 pixels regenerated, quality 86. Intrinsic HTML dimensions updated to 1280 × 881. Descriptive alt text and visible sample-film attribution/license added.
+- Desktop 1440 × 1000, phone 390 × 844, and narrow 320 × 844: image decoded, synthetic-demo caption and CC BY 3.0 credit present, no horizontal overflow. Desktop and phone section screenshots inspected. Browser page-error log empty. These are browser viewport checks, not physical-device or screen-reader certification.
+- `python tools/check_site.py`: pass (five project anchors, unique ids, local references, responsive sources, image alt/dimensions/loading, email and social image).
 - `git diff --check`: pass.
-- Local HTTP preview: root and referenced assets return 200.
-- Rendered desktop review at 1440 × 1000: hero, AICS, TeachLivE, FLITE, DebriefScape and Pantheon reviewed. Real screenshots retained; Pantheon HUD remnants removed by a tighter crop. AICS copy aligned to the primary capture. No horizontal overflow. All nine image elements (including repeated classroom image and logo) loaded.
-- Rendered phone review at 390 × 844: hero, AICS, FLITE, DebriefScape and Pantheon checked; single-column stacking, captions and larger-view links retained. No horizontal overflow.
-- Additional 320 × 812 and 768 × 1024 viewport checks: no elements extended beyond the viewport. These are browser viewport checks, not physical-device tests.
-- Keyboard: first Tab reveals a visible skip link; Enter focuses `main`; next Tab reaches the main content's first action. Anchors use native links and explicit visible focus outlines, including a light focus outline on the dark workshop background.
-- Read-only computed text contrast audit: no failures among headings, paragraphs, links, captions, small labels, status labels and footer text; minimum measured ratio 5.06:1. This is a targeted audit, not a full accessibility certification or screen-reader test.
-- Browser console error log: empty during local review.
-- External destinations: AICS and FLITE content verified directly in a rendered browser; DebriefScape redirects to the UCF-hosted tool; TeachLivE points to UCF's project overview. Email links verified without sending mail.
-- Image variants: seven distinct real views, optimized WebP assets, no hotlinks or external fonts. Assets including logo and social preview total less than 1 MB on disk across all responsive variants; each visitor fetches a selected variant, not every variant. Larger views are local asset links.
-- Social preview: 1200 × 630 JPEG inspected; canonical remains the publishing `darinehughes.github.io` URL. Existing favicon, touch icon, identity SVGs and legacy HTML retained.
+- All assets including every responsive variant, logo and social preview total 985,344 bytes. Visitors request selected variants, not every variant.
+- Diff preserves the approved CSS, other six project views, and the rest of the reviewed page design. Only the DebriefScape media/caption/dimensions/alt and supporting documentation changed.
 
-## Deployment and limits
+## Publishing configuration
 
-Existing stack is buildless HTML/CSS. No tracked framework/package/build config or deployment workflow exists; there was no existing test suite to run. No dependency installation was added. Formatting used an already installed local Prettier.
+The user explicitly approved publication after replacement and verification. Authenticated GitHub Pages API read confirmed `build_type: legacy`, source branch `main`, path `/`, public site, HTTPS enforced, and CNAME `null`. The existing `hughesvr.com` redirect points to `darinehughes.github.io`; no domain/DNS change is needed.
 
-Repository source and remote identity are verified. GitHub Pages settings could not be read through the unauthenticated local GitHub CLI; no Pages-specific connector was available. Before any publishing push, confirm the configured source branch and root in Settings → Pages. The existing redirect/domain configuration was preserved.
-
-See `ASSET-PROVENANCE.md` for original image dates, the unknown original date of the published DebriefScape example, contribution evidence, and distribution boundaries. No outstanding project image is missing. Pantheon remains explicitly in development, with no open-source or mod-support claim.
+Publish by fetching/reconciling `main`, merging the reviewed branch through normal Git, and pushing `main`. Confirm the Pages build's commit and success status, then compare served HTML and the replacement asset at both requested public URLs. Publication evidence is recorded in the task's output handoff after deployment.
